@@ -10,34 +10,34 @@ library(rvest)
 url <- 'class_1_files/mi_primer_scraping.html'
 
 if(interactive()){
-  url <- 'slides/class_1/class_1_files/mi_primer_scraping.html'
+  url <- 'slides/class_1 test/class_1_files/mi_primer_scraping.html'
 }
 
 html <- read_html(x = url)
 html
 
 
-# Cuerpo de la página
+
 html |> html_element('body')
 
 
-# Elemento párrafo
+
 html |> html_element('p')
 
 
-# Elemento de id = first
+
 html |> html_element('#first') |> html_text()
 
 
-# Elemento imagen y atributo src
+
 html |> html_element('img') |> html_attr('src')
 
 
-# Elemento imagen y sus atributos
+
 html |> html_element('img') |> html_attrs()
 
 
-# Nombre de los elementos que están dentro del cuerpo del html
+
 html |> html_element('body') |> html_children() |> html_name()
 
 
@@ -88,7 +88,7 @@ df_critica <- df_critica |>
   filter(!(Película %in% c('Película', 'Promedio'))) |> 
   mutate(across(2:7, \(x) str_extract(x, '\\d.?\\d')), # capturo las notas
          across(6:7, \(x) str_replace(x, '\\,', '\\.')), # reemplazo ',' por '.'
-         across(2:5, as.integer)) # transformo strings a numeros.
+         across(2:5, as.integer)) # transformo strings a números.
 
 
 

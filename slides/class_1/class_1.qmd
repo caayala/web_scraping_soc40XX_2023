@@ -22,7 +22,7 @@ suppressPackageStartupMessages(library(tidyverse))
 library(knitr)
 
 # opts_chunk$set(cache.path = "class_1_files/class_1_cache/html/")
-```
+```	
 
 ## Expectativas y nivelación
 
@@ -40,7 +40,7 @@ library(knitr)
     -   **Cuidado**. Será necesario re--instalar todos los paquetes.
 -   Instalar la última versión de [*RStudio*](https://www.rstudio.com/products/rstudio/download/#download).
     -   Soporte para `|>` y mejoras varias.
--   Acceder a repositorio de Github para acceder a material de clases y ejercicios.
+-   Acceder a repositorio de GitHub para acceder a material de clases y ejercicios.
     -   [Repositorio del curso](https://github.com/caayala/web_scraping_soc40XX_2023)
 
 
@@ -53,7 +53,7 @@ library(knitr)
 
 Definición:
 
-> Capturar datos estructurados de una forma automátizada.
+> Capturar datos estructurados de una forma automatizada.
 
 Si ya han _copiado--&--pegado_ información de la web a un archivo, guardado imágenes o sonidos manualmente, ya hicieron web scraping.
 
@@ -115,7 +115,7 @@ Ej: Comparar precios en un sitio como [Knasta](https://knasta.cl).
 
 1.  **Identificar** un sitio web de interés.
 
-2.  Localizar las **URLs** en donde esté la información que querramos extraer.
+2.  Localizar las **URLs** en donde esté la información que queramos extraer.
 
 3.  **Pedir** la información con esos URLs al servidor recibir los datos. 
 
@@ -214,7 +214,7 @@ Fuente: [https://developer.mozilla.org](https://developer.mozilla.org/en-US/docs
 :::
 :::
 
-## ¿Qué es una página web? Componentes  {.smaller}
+## ¿Qué es una página web? Componentes {.smaller}
 
 ::: columns
 ::: {.column width="50%"}
@@ -225,7 +225,7 @@ Fuente: [https://developer.mozilla.org](https://developer.mozilla.org/en-US/docs
 
 -   `APIs` (*Application Programming Interface*): permite pedirle a un servidor información específica de nuestro interés.
 
--   `javascript`: faculta a que una página web contenga y ejecuteprogramas ([¡wordle!](https://www.nytimes.com/games/wordle/index.html)).
+-   `javascript`: faculta a que una página web contenga y ejecute programas ([¡wordle!](https://www.nytimes.com/games/wordle/index.html)).
 
     Hay ocasiones que es ese programa el que pide, procesa y/o muestra los datos que nos interesa.
 :::
@@ -239,7 +239,7 @@ Fuente: [https://developer.mozilla.org](https://developer.mozilla.org/en-US/docs
 :::
 :::
 
-## ¿Cómo es una página html?  {.smaller}
+## ¿Cómo es una página html? {.smaller}
 
 ::: columns
 ::: {.column width="40%"}
@@ -285,7 +285,7 @@ Un encabezado
 :::
 :::
 
-## ¿Cómo es una página html? Jerarquía  {.smaller}
+## ¿Cómo es una página html? Jerarquía {.smaller}
 
 Una página web tiene una estructura jerárquica.
 
@@ -315,7 +315,7 @@ Una página web tiene una estructura jerárquica.
 :::
 :::
 
-## ¿Cómo es una página html? Elementos  {.smaller}
+## ¿Cómo es una página html? Elementos {.smaller}
 
 Elementos de `html`
 
@@ -365,7 +365,7 @@ Elementos de `html`
 
 # Nuestro primer scraping
 
-## Nuestro primer scraping: lectura contenido 
+## Nuestro primer scraping: lectura de contenido 
 
 Leamos la [página web](./class_1_files/mi_primer_scraping.html) que hemos revisado.
 
@@ -520,7 +520,7 @@ df_critica <- df_critica |>
   filter(!(Película %in% c('Película', 'Promedio'))) |> 
   mutate(across(2:7, \(x) str_extract(x, '\\d.?\\d')), # capturo las notas
          across(6:7, \(x) str_replace(x, '\\,', '\\.')), # reemplazo ',' por '.'
-         across(2:5, as.integer)) # transformo strings a numeros.
+         across(2:5, as.integer)) # transformo strings a números.
 ```
 
 ::: {style="font-size:0.8em;"}
