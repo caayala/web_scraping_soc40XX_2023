@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.361">
 
   <meta name="author" content=" Cristián Ayala  Director DESUC">
-  <title>quarto-inputc4fa47bd</title>
+  <title>quarto-input365ce4d9</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="class_2_files/libs/revealjs/dist/theme/quarto.css">
   <link href="class_2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -372,9 +437,10 @@ haga <strong><code>función</code></strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://raw.githubusercontent.com/rstudio/cheatsheets/main/pngs/purrr.png"></p>
-<figcaption>imagen cheatsheets</figcaption>
+<figcaption>purrr cheatsheets</figcaption>
 </figure>
 </div>
+<p><a href="https://posit.co/wp-content/uploads/2022/10/purrr.pdf">Bajar pdf</a></p>
 </div>
 </div>
 </section>
@@ -384,6 +450,8 @@ haga <strong><code>función</code></strong></p>
 <div class="column" style="width:50%;">
 <p>lista de ejemplo</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>(l <span class="ot">&lt;-</span>  <span class="fu">list</span>(<span class="at">a =</span> <span class="fu">c</span>(<span class="st">'caso'</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>),</span>
+<span id="cb1-2"><a href="#cb1-2"></a>            <span class="at">b =</span> <span class="fu">c</span>(<span class="st">'caso'</span> <span class="ot">=</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$a
 caso1 caso2 
@@ -396,6 +464,7 @@ caso1 caso2
 </div>
 <p>Suma de cada elemento de la lista.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>l <span class="sc">|&gt;</span> purrr<span class="sc">::</span><span class="fu">map</span>(sum)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$a
 [1] 3
@@ -407,6 +476,7 @@ $b
 </div><div class="column" style="width:50%;">
 <p>Extracción del elemento <code>caso2</code></p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>l <span class="sc">|&gt;</span> purrr<span class="sc">::</span><span class="fu">map</span>(<span class="st">'caso2'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$a
 [1] 2
@@ -417,6 +487,7 @@ $b
 </div>
 <p>Transformación de lista a tibble</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>tibble<span class="sc">::</span><span class="fu">enframe</span>(l)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   name  value    
@@ -431,7 +502,7 @@ $b
 <section>
 <section id="manipulación-de-texto" class="title-slide slide level1 center">
 <h1>Manipulación de texto</h1>
-<p>.huge[<code>stringr</code>]</p>
+<p><code>stringr</code></p>
 </section>
 <section id="stringr-guía" class="slide level2">
 <h2>stringr: guía</h2>
@@ -443,9 +514,10 @@ $b
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://github.com/rstudio/cheatsheets/raw/main/pngs/strings.png"></p>
-<figcaption>imagen cheatsheets</figcaption>
+<figcaption>stringr cheatsheets</figcaption>
 </figure>
 </div>
+<p><a href="https://posit.co/wp-content/uploads/2022/10/strings-1.pdf">Bajar pdf</a></p>
 </div>
 </div>
 </section>
@@ -453,26 +525,34 @@ $b
 <h2>stringr: fundamento</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>texto <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Viernes Santo'</span>, <span class="st">'Sábado Santo'</span>, </span>
+<span id="cb9-2"><a href="#cb9-2"></a>           <span class="st">'Elección 1'</span>, <span class="st">'18 septiembre'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Detectar elementos:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">str_detect</span>(texto, <span class="st">'Elección'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE FALSE  TRUE FALSE</code></pre>
 </div>
 </div>
 <p>Obtener solo elementos detectados:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">str_subset</span>(texto, <span class="st">'Santo'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Viernes Santo" "Sábado Santo" </code></pre>
 </div>
 </div>
 <p>Extraer texto:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">str_extract</span>(texto, <span class="st">'</span><span class="sc">\\</span><span class="st">d+'</span>) <span class="co"># números</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA   NA   "1"  "18"</code></pre>
 </div>
 </div>
 <p>Reemplazo:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">str_replace</span>(texto, <span class="st">'Santo'</span>, <span class="st">'Cristiano'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Viernes Cristiano" "Sábado Cristiano"  "Elección 1"       
 [4] "18 septiembre"    </code></pre>
@@ -481,27 +561,32 @@ $b
 </div><div class="column" style="width:50%;">
 <p>Reemplazo de un grupo de texto:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">str_replace</span>(texto, <span class="st">'(.*) Santo'</span>, <span class="st">'</span><span class="sc">\\</span><span class="st">1'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Viernes"       "Sábado"        "Elección 1"    "18 septiembre"</code></pre>
 </div>
 </div>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">str_replace</span>(texto, <span class="st">'(.*) (Santo)'</span>, <span class="st">'</span><span class="sc">\\</span><span class="st">2_</span><span class="sc">\\</span><span class="st">1'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Santo_Viernes" "Santo_Sábado"  "Elección 1"    "18 septiembre"</code></pre>
 </div>
 </div>
 <p>Remover texto:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">str_remove</span>(texto, <span class="st">' '</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ViernesSanto" "SábadoSanto"  "Elección1"    "18septiembre"</code></pre>
 </div>
 </div>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">str_remove</span>(texto, <span class="st">'[aeiou]'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Vernes Santo" "Sábdo Santo"  "Elcción 1"    "18 sptiembre"</code></pre>
 </div>
 </div>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">str_remove_all</span>(texto, <span class="st">'[aeiou]'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Vrns Snt"  "Sábd Snt"  "Elccón 1"  "18 sptmbr"</code></pre>
 </div>
@@ -513,6 +598,9 @@ $b
 <h2>Taller: ejemplo feriados</h2>
 <p>JSON con un listado de feriados en Chile</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>url <span class="ot">&lt;-</span> <span class="st">'https://apis.digital.gob.cl/fl/feriados'</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>resp <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(url) </span>
+<span id="cb28-3"><a href="#cb28-3"></a>resp <span class="sc">|&gt;</span> (<span class="cf">function</span>(x) x[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])() <span class="sc">|&gt;</span> <span class="fu">str</span>(<span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 2
  $ :List of 6
