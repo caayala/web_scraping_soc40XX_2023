@@ -48,7 +48,8 @@ calendario |>
 #### Evaluaciones 
 
 - Control 1 (20%): Captura de página web 1. 
-<!-- [Instrucciones](./homework/c_1). [Respuesta](./homework/c_1_answers.pdf) -->
+[Instrucciones](./homework/c_1). 
+<!-- [Respuesta](./homework/c_1_answers.pdf) -->
 - Control 2 (20%): Captura de página web 2
 <!-- Captura de datos de cine chileno.  -->
 <!-- [Instrucciones](./homework/c_2). [Respuesta](./homework/c_2_answers.pdf) -->
