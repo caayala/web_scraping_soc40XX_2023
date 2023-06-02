@@ -2,7 +2,7 @@
 title: |
   | Clase 2: Trabajo con listas 
   | y expresiones regulares
-subtitle: "Web Scraping y acceso a datos desde la web con R"
+subtitle: "Web Scraping y acceso a datos desde la web"
 author: "<br>Cristián Ayala<br> Director DESUC"
 lang: 'es'
 date: '2023-06-01'

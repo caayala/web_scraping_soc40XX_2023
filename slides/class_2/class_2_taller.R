@@ -148,11 +148,11 @@ gg_fer_num / gg_fer_prop +
 l_feriados |> pluck(1, 'leyes') # "leyes" del elemento 1
 l_feriados |> pluck(183, 'leyes')  # "leyes" del elemento 183
 
-l_feriados[1:3] |> map(pluck, 'leyes')
-l_feriados[1:3] |> map(pluck, 'leyes') |> map(pluck, 1, 'nombre')
+l_feriados[1:3] |> map(\(x) pluck(x, 'leyes'))
+l_feriados[1:3] |> map(\(x) pluck(x, 'leyes')) |> map(\(x) pluck(x, 1, 'nombre'))
 
-l_feriados[1:3] |> map(pluck, 'leyes', 1, 'nombre')
-l_feriados[1:3] |> map(pluck, 'leyes', 2, 'nombre')
+l_feriados[1:3] |> map(\(x) pluck(x, 'leyes', 1, 'nombre'))
+l_feriados[1:3] |> map(\(x) pluck(x, 'leyes', 2, 'nombre'))
 
 
 ## Comentarios ----
@@ -182,7 +182,7 @@ l_feriados |>
   str(1)
 
 # Cambio todos los comentarios
-l_feriados |> map(assign_in, list('comentarios'), 'cambio con assign_in')
+l_feriados |> map(\(x) assign_in(x, list('comentarios'), 'cambio con assign_in'))
 
 
 # Modifico comentarios para limpiarlos: 3 tipos de comentarios.
@@ -213,7 +213,7 @@ l_feriados[[144]] |> modify_in('comentarios', f_blancos) |> str(1)
 l_feriados[[168]] |> modify_in('comentarios', f_blancos) |> str(1)
 
 # Modifiquemos todos los comentarios
-l_feriados |> map(modify_in, 'comentarios', f_blancos)
+l_feriados |> map(\(x) modify_in(x, 'comentarios', f_blancos))
 
 # Formas equivalentes de anotar funciones anónimas "lambda".
 l_feriados |> map(function(x) modify_in(x, 'comentarios', f_blancos))
@@ -221,10 +221,11 @@ l_feriados |> map(function(x){modify_in(x, 'comentarios', f_blancos)})
 l_feriados |> map(\(x) modify_in(x, 'comentarios', f_blancos))
 l_feriados |> map(\(x){modify_in(x, 'comentarios', f_blancos)})
 l_feriados |> map(~modify_in(., 'comentarios', f_blancos))
+l_feriados |> map(modify_in, 'comentarios', f_blancos)
 
 # Modifico la lista
 l_feriados <- l_feriados |> 
-  map(modify_in, 'comentarios', f_blancos)
+  map(\(x) modify_in(x, 'comentarios', f_blancos))
 
 ### keep ----
 # Dejo los elementos en los que 'comentarios' no sean NA.
