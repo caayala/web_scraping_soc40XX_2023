@@ -1,0 +1,603 @@
+---
+title: |
+  | Clase 5: Web Scraping avanzado 
+  | páginas estáticas
+subtitle: "Web Scraping y acceso a datos desde la web"
+author: "<br>Cristián Ayala<br> Director DESUC"
+lang: 'es'
+date: '2023-06-13'
+date-format: 'long'
+copyright: "[github.com/caayala](https://github.com/caayala)"
+format: 
+  revealjs:
+    footer: "DESUC Web Scraping, 2023"
+    slide-number: c/t
+    transition: none
+    theme: [moon]
+execute: 
+  cache: true
+# editor: 
+#   mode: source
+---
+
+```{r}
+#| echo: false
+#| 
+suppressPackageStartupMessages(library(tidyverse))
+library(rvest)
+library(httr)
+library(knitr)
+
+opts_chunk$set(cache.path = "class_5_files/class_5_cache/html/")
+```
+
+
+
+## Esquema general de un web scraping
+
+Estamos en condiciones de entender este esquema:
+
+```{r}
+#| fig-alt: 'Relación entre pasos para capturar sitios webs y funciones en R'
+#| out-width: '75%'
+#| echo: false
+#| 
+knitr::include_graphics('https://github.com/yusuzech/r-web-scraping-cheat-sheet/raw/master/resources/functions_and_classes.png')
+```
+
+::: aside
+Fuente: [Web Scraping Reference, Cheat Sheet for Web Scraping using R](https://github.com/yusuzech/r-web-scraping-cheat-sheet)
+:::
+
+
+
+## HTTP Conversación general
+
+Veamos en detalle el protocolo HTTP al momento de comunicarse con un servidor HTTP. 
+
+![Comunicación con servidor HTTP](./class_5_files/comunicacion_via_html.png)
+
+* Por HTTP además de texto se transmiten muchos otros documentos
+
+* HTTP no tiene mantiene el estado, es *stateless*.  
+Sin más, cada comunicación es como si fuese nueva.
+
+
+
+## URL {.smaller}
+
+*Uniform Resource Locators* o [URL](https://en.wikipedia.org/wiki/URL) tienen la siguiente forma:
+
+`scheme://hostname:port/path?querystring#fragment`
+
+- *scheme*: protocolo de conexión al servidor (http, https, ftp, mailto,…).
+
+- *hostname*: nombre del servidor al se quiere acceder. Servidor de DNS lo transforma a dirección IP.
+
+- *port*: puerta a la que se quiere entrar (`80` es el puerto por defecto de TCP) .
+
+- *path*: ubicación del recurso solicitado en el *hostname*.
+
+- *query string*: información anexa enviada al servidor en pares `var1=val1&var2=val2…`.
+
+- *fragment*: ubicación dentro de un archivo específico.
+
+<br>
+
+[`http://www.google.com:80/search?q=r+cheat+sheet+filetype%3Apdf`](http://www.google.com:80/search?q=r+cheat+sheet+filetype%3Apdf)
+
+
+
+## URL Encode
+
+Las URLs usan solo los 128 caracteres de [ASCII](https://es.wikipedia.org/wiki/ASCII). 
+Todas las letras no incluidas deben ser sustituidos por una representación en ellas.
+
+Funciones para trabajar con [Código URL](https://es.wikipedia.org/wiki/Código_porciento):
+
+```{r}
+#| echo: true
+text <- "¡Hola! Soy Cristián y tengo 44 años"
+
+(text_url <- utils::URLencode(text))
+```
+
+```{r}
+#| echo: true
+(utils::URLdecode(text_url))
+```
+
+::: aside
+Nota: <br>
+el `+` del ejemplo anterior solo sirve porque es un espacio en la parte de búsqueda, *query*, de la dirección.
+En otros casos la codificación de " " es `%20`.
+:::
+
+
+
+## HTTP Requerimiento {.smaller}
+
+La comunicación se efectúa intercambiando mensajes que contienen **tres partes**. 
+
+Mensaje con **_request_**:
+
+:::: {.columns}
+::: {.column width="50%"}
+- *Primera línea*: 
+
+    Método, path y versión
+
+- *Cabeza*: 
+    
+    Nombre1: Valor1 <br>
+    Nombre2: Valor2
+
+- *Cuerpo*: 
+
+    Datos a comunicar
+:::
+
+::: {.column width="50%"}
+- *Primera línea*: 
+    
+    `POST /edicion.html HTML/1.1`
+
+- *Cabeza* : 
+  
+    `Host: es.wikipedia.org`
+    <br><br>
+
+- *Cuerpo*: 
+
+    `Quiero agregar esta línea al texto.`
+:::
+::::
+
+
+## HTTP Respuesta {.smaller}
+
+La comunicación se efectúa intercambiando mensajes que contienen **tres partes**. 
+
+Mensaje con **_response_**:
+
+:::: {.columns}
+::: {.column width="50%"}
+- *Primera línea*: 
+
+    versión, estado y frase
+
+- *Cabeza*: 
+    
+    Nombre1: Valor1<br>
+    Nombre2: Valor2
+
+- *Cuerpo*: datos a comunicar
+:::
+
+::: {.column width="50%"}
+- *Primera línea*: 
+    
+    `HTTP/1.1 200 OK`
+
+- *Cabeza* : 
+  
+    `Content-type: text/plain`
+    <br><br>
+
+- *Cuerpo*: 
+
+    `El mensaje fue agregado con éxito.`
+:::
+::::
+
+
+
+## HTTP Métodos de requerimientos {.smaller}
+
+Los [métodos de requerimientos](https://www.w3schools.com/tags/ref_httpmethods.asp) más comunes son los siguientes:
+
+| Método | Descripción |
+| :--- | :------ | 
+| GET  | Pide recurso del servidor |
+| POST | Pide recurso del servidor enviando en el cuerpo datos o archivos | 
+| HEAD | Como GET, pero servidor solo devuelve start line y header |
+| PUT | Guarda el cuerpo en el servidor |
+| DELETE | Borra recurso del servidor |
+| TRACE | Sigue la ruta del mensaje hasta llegar al servidor |
+| OPTIONS | Devuelve la lista de métodos HTTP compatibles |
+| CONNECT | Establece una conexión de red |
+
+Los más importantes son `GET` y `POST` porque piden cosas al servidor.
+
+
+
+## HTTP Códigos de respuesta 1 {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Cuando se pide algo a un servidor, este entregará una respuesta, el *status code* o [códigos de respuesta](https://www.w3schools.com/tags/ref_httpmessages.asp). 
+Van desde 100 a 599.
+
+Hay 5 bloques de códigos: 
+
+| Código | Mensaje |
+| :--- | :----------- |
+| 1xx  | Respuestas informativas |
+| 2xx  | Peticiones correctas |
+| 3xx  | Redirecciones |
+| 4xx  | Errores del cliente |
+| 5xx  | Errores de servidor |
+:::
+
+::: {.column width="50%"}
+Ejemplos relevantes:
+
+- **`200` OK** Petición correctas 
+
+- **`400` Bad Request** Servidor no procesará la solicitud
+
+- **`404` Not found** Recurso no encontrado
+:::
+
+::::
+
+
+
+## HTTP Códigos de respuesta 2
+
+- Sitio no existe
+
+```{r}
+#| echo: true
+httr::GET(url = 'https://blog.desuc.cl/test.html') |> httr::http_status()
+```
+
+- Respuesta OK
+
+```{r}
+#| echo: true
+rvest::session(url = 'https://blog.desuc.cl/')
+```
+
+
+
+
+## HTTP Cabeceras 1 {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+La cabecera ---header--- definen las acciones a tomar al momento de la recepción de un requerimiento o respuesta.
+
+- *Accept* (request): tipo de contenido que el cliente puede recibir.
+- *Accept-Encoding* (request): métodos de compresión o codificación que puede aceptar el cliente.
+- *Authorization* (request): método sencillo para enviar credencial del cliente al servidor.
+- *Content-Type* (response; body): tipo de contenido en el cuerpo de la respuesta.
+- *Cookie* (request): información hacia el servidor. Envío información previamente recibida en *Set-Cookie* (response).
+- *User-Agent* (request): descripción del [tipo de cliente](http://httpbin.org/user-agent) que hace el requerimiento.
+:::
+
+::: {.column width="50%"}
+Ejemplo de cabecera de requerimiento GET:
+
+```{r}
+#| echo: true
+s_blog <- GET(url = 'https://blog.desuc.cl')
+
+s_blog$request
+```
+:::
+
+::::
+
+
+
+## HTTP Cabeceras 2
+
+El intercambio de información se puede ver también el inspector del navegador de preferencia:
+
+```{r}
+#| fig-alt: 'Ejemplo de headers'
+#| out-width: '70%'
+#| echo: false 
+#| 
+knitr::include_graphics('class_5_files/request_blog.png')
+```
+
+
+
+## HTTP Cabeceras de respuesta
+
+Ejemplo de cabecera de respuesta luego de capturar <https://blog.desuc.cl>:
+
+```{r}
+#| echo: true
+s_blog |> headers() |> enframe() |> 
+  mutate(value = as.character(value))
+```
+
+
+
+## HTTP Modificación parámetros 1
+
+Agregar parámetros a la cabecera del requerimiento: Variables en URL.
+
+1. Valores en la `URL`.
+
+1. Autentificación con *nombre* y *clave*.
+
+1. Cambio en el User-agent. Se lo conoce como *spoofing*.
+
+1. Ajuste de cookies.
+
+1. Declaro aceptar archivos json.
+
+1. Agregar variables personalizadas.
+
+
+
+## HTTP Modificación parámetros 2 {.smaller}
+
+Respuesta obtenida luego de agregar manualmente parámetros al requerimiento: 
+
+```{r}
+#| echo: true
+(resp <- GET('http://httpbin.org/get',
+             query = list(var1 = "valor1", 
+                          var2 = "valor2"), #URL values
+             authenticate('usuario', 'clavesegura'),
+             user_agent(agent = 'hola mundo'),
+             set_cookies(a = 1),
+             accept_json(),
+             add_headers(class = "Web Scraping UC", year = 2023)))
+```
+
+
+
+## HTTP Cookies en cabeceras {.smaller}
+
+Con las cookies de un sitio web podemos mantener información de la sesión.
+
+```{r}
+#| echo: true
+(git_cookies <- GET('http://github.com') |> cookies())
+```
+
+Listado de pares nombre = valor de cookies para nuevas conexiones:
+
+```{r}
+#| echo: true
+git_cookies |> pull(value, name) |> str_trunc(width = 70)
+```
+
+
+
+## HTTP User-agent {.smaller}
+
+- Para recibir el User-Agent se puede usar <http://httpbin.org/user-agent>. <br>
+Su descripción [aquí](http://useragentstring.com/index.php).
+
+- `httr` se muestra en el User-Agent. El servidor puede saber que está siendo requerido para un web scraping.
+
+```{r}
+#| echo: true
+GET('http://httpbin.org/user-agent')
+```
+
+```{r}
+#| echo: true
+read_html('http://httpbin.org/user-agent')
+```
+
+En este momento, el User-Agent de mi navegador (Safari) es:
+
+```
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15
+```
+
+
+## HTTP Modificación de cookies 1 {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Las cookies las envía el servidor en su respuesta. Podemos crear cookies de prueba en esta sesión.
+
+```{r}
+#| echo: true
+GET('http://httpbin.org/cookies/set?c1=tritón&c2=crema')
+```
+:::
+
+::: {.column width="50%"}
+En siguientes visitas a ese mismo sitio web, esas cookies se mantienen
+
+```{r}
+#| echo: true
+GET('http://httpbin.org/cookies') |> 
+  cookies() |> as_tibble() |> 
+  select(domain, name, value)
+```
+:::
+
+::::
+
+
+
+## HTTP Modificación de cookies 2 {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Puedo agregar información de _cookies_, manualmente. No quedará guardada en el servidor.
+
+```{r}
+#| echo: true
+GET('http://httpbin.org/cookies',
+    set_cookies('x1' = 'vino'))
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+GET('http://httpbin.org/cookies') |> 
+  cookies() |> as_tibble() |> 
+  select(domain, name, value)
+```
+:::
+
+::::
+
+
+
+## Acceso a información: Spoofing Headers 1
+
+Ejemplo de [Spoofing Headers](https://www.scrapethissite.com/pages/advanced/?gotcha=headers). 
+
+```{r}
+#| echo: true
+f_container_row <- function(.get){
+  .get |> 
+    read_html() |> 
+    html_element('.container .row') |> 
+    html_text() |> str_squish()
+}
+
+try(GET('https://www.scrapethissite.com/pages/advanced/?gotcha=headers') |> 
+      f_container_row())
+```
+
+
+
+## Acceso a información: Spoofing Headers 2 {.smaller}
+
+1. Resolvemos problema con `accept()`.
+
+```{r}
+#| echo: true
+try(GET('https://www.scrapethissite.com/pages/advanced/?gotcha=headers',
+    accept('text/html')) |> 
+      f_container_row())
+```
+
+2. Resolvemos problema con `user-agent()`.
+
+```{r}
+#| echo: true
+GET('https://www.scrapethissite.com/pages/advanced/?gotcha=headers',
+    user_agent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15'),
+    accept('text/html')) |> 
+  f_container_row()
+```
+
+
+
+## Acceso a información: Autentificación 1 {.smaller}
+
+Ejemplo de [Quotes to Scrape con login](http://quotes.toscrape.com/login). 
+
+Llenado de formulario usando `httr` y el método [POST](https://httr.r-lib.org/reference/POST.html).
+
+```{r}
+#| echo: true
+form <- httr::POST('http://quotes.toscrape.com/login',
+                   body = list(username = 'test', 
+                               password = 'test'))
+
+form |> read_html() |> html_element('body form') |> html_text2()
+```
+
+El parámetro CRSF no lo estamos entregando. 
+
+
+
+## Acceso a información: Autentificación 2 {.smaller}
+
+Busquemos el parámetro `csrf_token` para agregarlo en el envío de información.
+
+```{r}
+#| echo: true
+resp_login <- GET('http://quotes.toscrape.com/login') |> 
+  read_html() |> 
+  html_elements('form input')
+
+resp_login
+```
+```{r}
+(csrf_token_value <- resp_login[[1]] |> html_attr('value'))
+```
+
+
+
+## Acceso a información: Autentificación 3 {.smaller}
+
+Agregamos el `csrf_token` capturado en la página anterior.
+
+```{r}
+#| echo: true
+resp_form <- httr::POST('http://quotes.toscrape.com/login',
+                        body = list(username = 'test', 
+                                    password = 'test',
+                                    csrf_token = csrf_token_value))
+
+resp_form |> read_html() |> html_elements('.quote') |> html_text2() |> _[1:3]
+```
+
+
+
+## Acceso a información: Autentificación 4 {.smaller}
+
+Llenado de formulario usando `rvest`: Mantiene sesión.
+
+```{r}
+s <- rvest::session('http://quotes.toscrape.com/login')
+f <- html_form(s)[[1]]
+
+f_llena <- html_form_set(form = f,
+                         username = 'test', 
+                         password = 'test2')
+
+f_respuesta <- session_submit(x = s,
+                              form = f_llena)
+
+f_respuesta |> read_html() |> 
+  html_elements('.quote') |> 
+  html_text2() |> _[1:3]
+```
+
+
+
+## En el próximo taller… 
+
+- Captura de sitios con login y modificación de encabezados.
+
+
+
+## {.smaller}
+
+Presentación y código en GitHub:\
+<https://github.com/caayala/web_scraping_soc40XX_2023>\
+<https://caayala.github.io/web_scraping_soc40XX_2023>
+
+<br>
+
+::: {style="font-size:3em; text-align:center; padding: 50px;"}
+¡Gracias!
+:::
+
+<br> 
+Cristián Ayala\
+<https://blog.desuc.cl/>\
+<http://github.com/caayala>
+
+
+```{r}
+#| include: false
+
+# Extraer código R
+knitr::purl('class_5.qmd',
+            output = 'class_5.R',
+            quiet = TRUE)
+```
