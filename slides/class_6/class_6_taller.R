@@ -23,12 +23,13 @@ s_form <- html_form_set(s_form,
                         username = Sys.getenv('MOODLE_CCSS_UC_ID'),
                         password = Sys.getenv('MOODLE_CCSS_UC_PASS'))
 
+# Autentificación en la sesión s.
 session_submit(s, s_form)
 
 
-### Cumpleaños ----
+### Participantes ----
 # 
-# Link para la recepción de cumpleaños
+# Link para participantes
 url_captura <- 'https://cursosonline.cienciassociales.uc.cl/course/view.php?id=66'
 parse_url(url_captura)
 
@@ -149,6 +150,9 @@ json_comunas <- x_data$response |>
   content(type = 'text') |> 
   jsonlite::fromJSON()
 
+json_comunas |> 
+  str()
+
 json_comunas$comunas |> 
   as_tibble()
 
@@ -188,7 +192,7 @@ df_comunas |>
   head(3)
 
 df_comunas |> 
-  write_excel_csv('slides/class_6/class_6_taller/df_comunas_amigables.csv')
+  write_excel_csv2('slides/class_6/class_6_taller/df_comunas_amigables.csv')
 
 
 # Ejemplo 3: YouTube Data API ----
