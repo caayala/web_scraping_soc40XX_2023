@@ -37,7 +37,7 @@ Tendremos clases teóricas (T) y prácticas (P).
 |     5 | 2023-06-13 | T    | Web Scraping avanzado                              | [`rvest`](https://rvest.tidyverse.org), [`httr`](https://httr.r-lib.org)          |                               | [Slides](slides/class_5/class_5#1) [.qmd](slides/class_5/class_5.qmd)                                       |
 |     6 | 2023-06-15 | P    | Web Scraping avanzado                              | [`rvest`](https://rvest.tidyverse.org), [`httr`](https://httr.r-lib.org)          | [C2 (20%)](homework/c_2.html) | [Slides](slides/class_6/class_6#1) [.qmd](slides/class_6/class_6.qmd) [.R](slides/class_6/class_6_taller.R) |
 |       |            |      | *Feriado*                                          |                                                                                   |                               |                                                                                                             |
-|     7 | 2023-06-27 | T    | Integración de R con Google Sheets                 | [`googlesheets4`](https://googlesheets4.tidyverse.org)                            | Propuesta TF                  |                                                                                                             |
+|     7 | 2023-06-27 | T    | Integración de R con Google Sheets                 | [`googlesheets4`](https://googlesheets4.tidyverse.org)                            | Propuesta TF                  | [Slides](slides/class_7/class_7#1) [.qmd](slides/class_7/class_7.qmd)                                       |
 |     8 | 2023-06-29 | P    | Integración de R con Google Sheets                 | [`googlesheets4`](https://googlesheets4.tidyverse.org)                            |                               |                                                                                                             |
 |     9 | 2023-07-04 | T    | Uso de APIs: Spotify                               | [`spotifyr`](https://www.rcharlie.com/spotifyr/)                                  |                               |                                                                                                             |
 |    10 | 2023-07-06 | T    | Uso headless browser: chromote                     | [`chormote`](https://rstudio.github.io/chromote/)                                 | C3 (20%)                      |                                                                                                             |
@@ -47,7 +47,7 @@ Tendremos clases teóricas (T) y prácticas (P).
 
 - Control 1 (20%): Captura de página web 1.
   [Instrucciones](./homework/c_1).
-  <!-- [Respuesta](./homework/c_1_answers.pdf) -->
+  [Respuesta](./homework/c_1_answers.pdf).
 
 - Control 2 (20%): Captura de página web 2 Captura de datos de cine
   chileno. [Instrucciones](./homework/c_2).
