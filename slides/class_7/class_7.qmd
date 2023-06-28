@@ -479,7 +479,7 @@ value_list
 Agregar valores según vector anterior.
 
 ```{r}
-df_base <- df_base %>%
+df_base <- df_base |> 
   labelled::set_value_labels(!!!value_list)
 
 df_base |> 
@@ -581,6 +581,8 @@ range_write(ss,
 
 
 ## En el próximo taller… 
+
+- Programación con dplyr.
 
 - Autentificación
 
