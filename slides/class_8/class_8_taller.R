@@ -5,7 +5,6 @@
 
 suppressPackageStartupMessages(library(tidyverse))
 library(labelled)
-library(knitr)
 
 
 # Ejemplo 1: Programación con dplyr ----
@@ -115,14 +114,23 @@ mtcars |>
 # Vector de caracteres
 var_chr <- c('mpg', 'disp', 'hp')
 
-map(var_chr, ~mean_var_3(mtcars, .)) # Error: No interpreta la variable.
+map(var_chr, \(x) mean_var_3(mtcars, x)) # Error: No interpreta la variable.
 
-map(var_chr, ~mean_var_3(mtcars, !!.)) # Error: Interpreta la variable como texto.
+map(var_chr, \(x) mean_var_3(mtcars, !!x)) # Error: Interpreta la variable como texto.
 
 # De characters a symbol `syms`
 var_chr_syms <- syms(var_chr) 
 
-map_dfr(var_chr_syms, ~mean_var_3(mtcars, !!.))
+# Lista con tablas calculadas en mean_var_3
+l_cyl <- map(var_chr_syms, \(x) mean_var_3(mtcars, !!x))
+
+# Unión de tablas por filas.
+l_cyl |> 
+  list_rbind()
+
+# Unión de tablas por columnas. Hay columnas con nombres duplicados.
+l_cyl |> 
+  list_cbind()
 
 
 # Vector de variables en la data.frame.
@@ -131,7 +139,7 @@ try(var_exprs <- c(mpg, disp, hp)) # No conoce esas variables.
 # De variables a symbol `exprs`
 var_exprs <- rlang::exprs(mpg, disp, hp) 
 
-map_dfr(var_exprs, ~mean_var_3(mtcars, !!.)) # Error: Interpreta la variable como texto.
+map_dfr(var_exprs, \(x) mean_var_3(mtcars, !!x)) # Funciona!
 
 
 
@@ -139,13 +147,13 @@ map_dfr(var_exprs, ~mean_var_3(mtcars, !!.)) # Error: Interpreta la variable com
 
 # Extra: método más rápido para considerar varias variables a la vez.
 mtcars |> 
-  group_by(cyl) |> 
-  summarise(across(c(mpg, disp, hp), mean))
+  summarise(across(c(mpg, disp, hp), mean),
+            .by = cyl)
 
 mean_var_4 <- function(.df, .vars){
   .df |> 
-    group_by(cyl) |> 
-    summarise(across({{ .vars }}, mean))
+    summarise(across({{ .vars }}, mean),
+              .by = cyl)
 }
 
 mtcars |> 
@@ -158,24 +166,26 @@ mtcars |>
 
 mean_var_5 <- function(.df, .vars, .group){
   
-  
-  
+
 }
 
 mtcars |> 
   mean_var_5(mpg, carb)
 
 
-# Tip para funciones sencillas: *passing the dots*
+# 💡 Tip para funciones sencillas: *passing the dots*
 
 mean_var_6 <- function(.df, ...){
   .df |> 
-    group_by(cyl) |> 
-    summarise(across(c(...), mean))
+    summarise(across(c(...), mean),
+              .by = cyl)
 }
 
 mtcars |> 
   mean_var_6('mpg', disp, 'hp')
+
+
+# ¿Cómo puedo utilizar dots `...` y un parámetro que permita controlar la agrupación?
 
 
 
@@ -218,7 +228,8 @@ var_label(df_base)
 table(df_base$s1_1, useNA = 'ifany')
 
 df_base <- df_base |> 
-  mutate(across(starts_with('s1'), ~na_if(., 9)))
+  mutate(across(starts_with('s1'), 
+                \(x) na_if(x, 9)))
 
 
 ## Categoría de respuestas ----
@@ -329,7 +340,9 @@ ggplot(df_mean_edad,
   labs(title = 'Gráfico de prueba',
        subtitle = str_wrap('Le voy a enumerar una serie de metas que Chile se ha propuesto para el futuro. Pensando en un plazo de 10 años, ¿Ud. cree que se habrán alcanzado estas metas, se habrá avanzado, se seguirá igual que ahora o se habrá retrocedido?',
                            60),
-       y = 'Tramos de edad') + 
+       x = 'Media',
+       y = 'Tramos de edad',
+       caption = 'Fuente: Bicentenario 2022. Datos no ponderados') + 
   theme_minimal() +
   theme(plot.subtitle = element_text(size = rel(.6)),
         plot.title.position = 'plot')
