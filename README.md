@@ -38,9 +38,9 @@ Tendremos clases teóricas (T) y prácticas (P).
 |     6 | 2023-06-15 | P    | Web Scraping avanzado                              | [`rvest`](https://rvest.tidyverse.org), [`httr`](https://httr.r-lib.org)          | [C2 (20%)](homework/c_2.html) | [Slides](slides/class_6/class_6#1) [.qmd](slides/class_6/class_6.qmd) [.R](slides/class_6/class_6_taller.R) |
 |       |            |      | *Feriado*                                          |                                                                                   |                               |                                                                                                             |
 |     7 | 2023-06-27 | T    | Integración de R con Google Sheets                 | [`googlesheets4`](https://googlesheets4.tidyverse.org)                            | Propuesta TF                  | [Slides](slides/class_7/class_7#1) [.qmd](slides/class_7/class_7.qmd)                                       |
-|     8 | 2023-06-29 | P    | Integración de R con Google Sheets                 | [`googlesheets4`](https://googlesheets4.tidyverse.org)                            |                               | [Slides](slides/class_8/class_8#1) [.qmd](slides/class_8/class_8.qmd)                                       |
-|     9 | 2023-07-04 | T    | Uso de APIs: Spotify                               | [`spotifyr`](https://www.rcharlie.com/spotifyr/)                                  |                               |                                                                                                             |
-|    10 | 2023-07-06 | T    | Uso headless browser: chromote                     | [`chormote`](https://rstudio.github.io/chromote/)                                 | C3 (20%)                      |                                                                                                             |
+|     8 | 2023-06-29 | P    | Integración de R con Google Sheets                 | [`googlesheets4`](https://googlesheets4.tidyverse.org)                            |                               | [Slides](slides/class_8/class_8#1) [.qmd](slides/class_8/class_8.qmd) [.R](slides/class_8/class_8_taller.R) |
+|     9 | 2023-07-04 | T    | Uso de APIs: Spotify                               | [`spotifyr`](https://www.rcharlie.com/spotifyr/)                                  |                               | [Slides](slides/class_9/class_9#1) [.qmd](slides/class_9/class_9.qmd)                                       |
+|    10 | 2023-07-06 | T    | Uso headless browser: chromote                     | [`chormote`](https://rstudio.github.io/chromote/)                                 | [C3 (20%)](homework/c_3.html) |                                                                                                             |
 |    11 | 2023-07-11 | T    | Presentación trabajo final                         |                                                                                   |                               |                                                                                                             |
 
 #### Evaluaciones
@@ -53,8 +53,9 @@ Tendremos clases teóricas (T) y prácticas (P).
   chileno. [Instrucciones](./homework/c_2).
   <!-- [Respuesta](./homework/c_2_answers.pdf) -->
 
-- Control 3 (20%): Uso de API <!-- Análisis de canciones.  -->
-  <!-- [Instrucciones](./homework/c_3). [Respuesta](./homework/c_3_answers.pdf) -->
+- Control 3 (20%): Uso de API Análisis de canciones.
+  [Instrucciones](./homework/c_3).
+  <!-- [Respuesta](./homework/c_3_answers.pdf) -->
 
 - Trabajo Final (40%): Trabajo de interés de los alumnos.
 
