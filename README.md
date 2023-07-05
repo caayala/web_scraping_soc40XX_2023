@@ -51,7 +51,7 @@ Tendremos clases teóricas (T) y prácticas (P).
 
 - Control 2 (20%): Captura de página web 2 Captura de datos de cine
   chileno. [Instrucciones](./homework/c_2).
-  <!-- [Respuesta](./homework/c_2_answers.pdf) -->
+  [Respuesta](./homework/c_2_answers.pdf).
 
 - Control 3 (20%): Uso de API Análisis de canciones.
   [Instrucciones](./homework/c_3).
