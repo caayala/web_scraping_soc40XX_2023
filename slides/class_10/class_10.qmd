@@ -1,0 +1,577 @@
+---
+title: |
+  | Clase 10: Taller
+  | chromote y repaso 
+subtitle: "Web Scraping y acceso a datos desde la web"
+author: "<br>Cristián Ayala<br> Director DESUC"
+lang: 'es'
+date: '2023-07-06'
+date-format: 'long'
+copyright: "[github.com/caayala](https://github.com/caayala)"
+format: 
+  revealjs:
+    footer: "DESUC Web Scraping, 2023"
+    slide-number: c/t
+    transition: none
+    theme: [moon]
+fig-align: center
+execute: 
+  cache: true
+# editor: 
+#   mode: source
+---
+
+
+```{r}
+#| echo: false
+#| warning: false
+suppressPackageStartupMessages(library(tidyverse))
+library(rvest)
+library(httr)
+library(knitr)
+
+opts_chunk$set(cache.path = "class_10_files/class_10_cache/html/")
+```
+
+
+## Motivación
+
+- Obtener datos generados dinámicamente por javascript emulando un navegador con `chromote`. 
+
+- Recuento y resumen de lo visto.
+
+
+
+## Paquetes para la clase de hoy
+
+Grupo de paquetes interrelacionados:
+
+- [chromote](https://rstudio.github.io/chromote/): 
+Implementación de [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) 
+en R para manejar un navegador programáticamente.
+
+- [polite](https://dmi3kno.github.io/polite/): promueve una conducta responsable.
+
+
+
+## Motivación 1
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Enfrentamos una página que procesa y genera contenido mediante JavaScript o acciones del navegador.
+
+- La captura del html de ella no entregará información requerida. 
+
+- Podemos entonces controlar un navegador sin cabeza (*[headless browser](https://en.wikipedia.org/wiki/Headless_browser)*) 
+para generar acciones y obtener los datos demandados.
+:::
+
+::: {.column width="50%"}
+- Ejemplo [MIME Mineduc](https://www.mime.mineduc.cl/explorer)
+
+![Vista principal MIME](class_10_files/mime_mineduc.jpeg)
+:::
+
+::::
+
+
+
+## Motivación 2
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- La página contiene solo javascript.
+
+- Datos de cada escuela se despliegan luego de buscar en listas.
+
+- Queremos obtener la **información de las escuelas**.
+:::
+
+::: {.column width="50%"}
+- Ejemplo [Admisión escolar 2023](https://admision.mineduc.cl/vitrina-vue/)
+
+![Vista principal MIME](class_10_files/vue_vitrina-vue.png)
+:::
+
+::::
+
+
+
+## Motivación 3
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Al capturar su contenido sólo con `rvest` obtenemos lo siguiente:
+
+    No funciona directamente sin un navegador que ejecute JavaScript.
+:::
+
+::: {.column width="50%"}
+```{r}
+url <- 'https://admision.mineduc.cl/vitrina-vue/'
+
+read_html(url) |> 
+  html_element('body')
+```
+:::
+
+::::
+
+
+
+## Explorar página web 1
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Selección de escuelas mediante filtros.
+- Distintas vistas de establecimientos
+:::
+
+::: {.column width="50%"}
+![Imagenes cargan al aplicar filtros](class_10_files/vue_explorar_1.png)
+:::
+
+::::
+
+
+
+## Explorar página web 2 {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- La información de una comuna se accede mediante:
+
+- GET: información de todos los establecimientos la comuna.
+:::
+
+::: {.column width="50%"}
+![POST de búsqueda de colegio](class_10_files/vue_establecimientos_comuna.png)
+:::
+
+::::
+
+
+
+## Explorar página web 3
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- La información de la comuna entrega un `json` que podríamos manipular.
+:::
+
+::: {.column width="50%"}
+![POST de búsqueda de colegio body](class_10_files/vue_establecimientos_comuna_json.png)
+:::
+
+::::
+
+
+## Explorar página web 4
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- En la vista _detalle_ podemos ver información parcial de las escuelas.
+:::
+
+::: {.column width="50%"}
+![Detalle de comuna](class_10_files/vue_establecimientos_comuna_detalle.png)
+:::
+
+::::
+
+
+## chromote
+
+- Para su uso se recomienda tener **Google Chrome** instalado.
+
+- Pasos:
+
+    1. Crear una instancia del navegador controlado desde R.
+    1. Abrir una ventana.
+    1. Ir al sitio web.
+    1. Capturar elementos de clase `.bg-white`.
+
+
+
+## chromote: Acceso a sitio web
+
+Navegar hasta sitio de interés.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+# remotes::install_github("rstudio/chromote") # versión de desarrollo.
+library(chromote)
+try(b <- ChromoteSession$new()) # Nuevo navegador.
+try(b1 <- b$new_session()) # Nueva "ventana".
+
+# Ir a sitio web de interés
+try(b1$Page$navigate("https://admision.mineduc.cl/vitrina-vue/"))
+Sys.sleep(5) # Tiempo para que la página cargue.
+```
+
+```{r}
+# Se puede ver lo que hace esta "ventana":
+if(interactive()){
+  b1$view()
+}
+```
+:::
+
+::: {.column width="50%"}
+![DevTools](class_10_files/vue_chromote_DevTools_1.jpg)
+:::
+
+::::
+
+
+
+## chromote: Captura de atributos 1
+
+- Obtenemos del navegador el nodo raíz (`root`) 
+del [Document Object Model o DOM](https://en.wikipedia.org/wiki/Document_Object_Model) de la página que está viendo.
+- Usamos función [getDocument](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getDocument).
+
+```{r}
+try(x1 <- b1$DOM$getDocument()) # Documento en R
+
+try(x1$root |> str(2))
+```
+
+
+
+## chromote: Captura de atributos 2 {.smaller}
+
+- Dentro de los nodos del documento, se buscarán elementos `<option>` 
+en un nodo `<select>` cuyo atributo `id` sea `select-region`.
+
+```{r}
+try(select_reg  <- b1$DOM$querySelectorAll(x1$root$nodeId, "select[id=select-region]"))
+try(select_com  <- b1$DOM$querySelectorAll(x1$root$nodeId, "select[id=select-comuna]"))
+try(opt_reg_ids <- b1$DOM$querySelectorAll(x1$root$nodeId, "select[id=select-region] option"))
+
+try(opt_reg_ids$nodeIds |> unlist())
+```
+
+- Posición de los nodos de interés.
+
+
+
+## chromote: Captura de atributos 3, mediante html
+
+- Con los nodos de interés, puedo acceder a su html mediante
+[getOuterHTML](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getOuterHTML)
+
+```{r}
+try(
+  b1$DOM$getOuterHTML(opt_reg_ids$nodeIds[[1]])[[1]] |>
+    read_html() |>
+    html_text()
+)
+```
+
+
+
+## chromote: Captura de texto 4
+
+- Con los nodos de interés, puedo ver directamente atributos con [getAttributes](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getAttributes)
+
+```{r}
+try(b1$DOM$getAttributes(opt_reg_ids$nodeIds[[2]])) # segunda opción
+```
+
+Capturar el texto para todos los nodos identificados usando `map`.
+
+```{r}
+try(l_region_chr <- map(opt_reg_ids$nodeIds,
+                        \(x) b1$DOM$getOuterHTML(x)[[1]] |> 
+                          read_html()))
+
+try(length(l_region_chr))
+```
+
+```{r}
+map_chr(l_region_chr, html_text)
+```
+
+
+## chromote: Captura de atributos 5
+
+Capturar el atributo `value` para todos los nodos identificados usando `map`.
+
+```{r}
+b1$DOM$getAttributes(opt_reg_ids$nodeIds[[2]])$attributes |> unlist()
+```
+
+```{r}
+try(l_region_int <- map_chr(opt_reg_ids$nodeIds,
+                            \(x) b1$DOM$getAttributes(x)$attributes[[4]]))
+try(length(l_region_int))
+```
+
+```{r}
+try(l_region_int)
+```
+
+
+## chromote: navegar entre páginas 1
+
+- Puedo navegar dentro de la ventana del navegador con el método [navigate](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigate).
+
+```{r}
+# A google
+if(interactive()){
+  b1$Page$navigate(url = 'https://www.google.cl')
+}
+```
+
+- Revisión del historial de navegación con [getNavigationHistory](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getNavigationHistory)
+
+```{r}
+# Historia
+if(interactive()){
+  nav_history <- b1$Page$getNavigationHistory()
+  
+  nav_history[1:2] |> str()
+}
+```
+
+## chromote: navegar entre páginas 2
+
+- Vuelvo a páginas anteriores en el historial mediante [navigateToHistoryEntry](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigateToHistoryEntry)
+
+```{r}
+# Vuelvo a página de inicio
+b1$Page$navigateToHistoryEntry(entryId = nav_history$entries[[2]]$id)
+```
+
+
+
+## chromote: Cerrar navegador
+
+Terminar la sesión.
+
+```{r}
+try(b1$parent$close())
+```
+
+
+
+## httr: GET escuelas por comuna 1
+
+- Revisar bien el funcionamiento de la página 🚨
+
+- La página de SAE permite capturar colegios por región y comuna.
+
+- Se puede usar GET para buscar escuelas luego de analizar el tráfico.
+
+```{r}
+comuna <- 'ALTO_HOSPICIO'
+
+resp <- GET(url = 'https://apisae.mineduc.cl/sae-api-vitrina/v1/establecimientos',
+            query = list(comuna = comuna),
+            accept_json(),
+            add_headers('accept-encoding' = 'gzip'))
+```
+
+
+
+## httr: GET escuelas por comuna 2
+
+- Datos de búsqueda para `r comuna`. 
+
+¡Nos permite recabar información por comuna!
+
+```{r}
+resp |> content('text') |> jsonlite::fromJSON() |> str(1)
+```
+
+
+
+## httr: GET escuelas por comuna 3
+
+- Crear función para la captura de datos.
+
+```{r}
+f_comuna_escuelas <- function(.comuna){
+  # Recepción de la respuesta
+  response <- GET(url = 'https://apisae.mineduc.cl/sae-api-vitrina/v1/establecimientos',
+                  query = list(comuna = comuna),
+                  accept_json(),
+                  add_headers('accept-encoding' = 'gzip'))
+  
+  response |> 
+    content('text', encoding = 'UTF-8') |> 
+    jsonlite::fromJSON()
+}
+```
+
+
+
+## httr: GET escuelas por comuna 4 {.smaller}
+
+Puedo obtener el listado de comunas.
+
+```{r}
+js_comunas <- read_html('https://admision.mineduc.cl/vitrina-vue/static/js/app.08fc6ac089af64dc7303.js')
+
+comunas <- js_comunas |> html_text() |> 
+  str_extract_all('nombreComuna:\"(.*?)\"')
+
+comunas[[1]] |> 
+  str_remove_all('nombreComuna:\\\"|\\\"') |> 
+  head()
+```
+
+
+```{r}
+comunas <- comunas[[1]] |> 
+  str_remove_all(r'(nombreComuna:\"|\")') # R 4.0 soporta "raw strings"
+
+comunas |> head()
+```
+
+
+
+## httr: GET escuelas por comuna 5
+
+Prueba con algunas comunas
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+comunas[1:20]
+```
+:::
+
+::: {.column width="50%"}
+- Buscar por **comuna**.
+
+```{r}
+df <- f_comuna_escuelas(comunas[1])
+```
+:::
+
+::::
+
+
+
+## httr: GET escuelas por comuna 6 {.smaller}
+
+Obtener información de `comunas_chr` usando map.
+
+```{r}
+l_escuelas <- map(comunas[1:3], 
+                  f_comuna_escuelas)
+
+df_escuelas <- l_escuelas |> 
+  list_rbind() |> as_tibble()
+
+df_escuelas |> head()
+```
+
+
+
+## rvest: información de detalle 1 {.smaller}
+
+Para la información de detalle, es posible usar simplemente `jsonlite::fromJSON`, si se conoce el `rbd`.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+f_rbd_detalle <- function(.rbd){
+  jsonlite::fromJSON(str_glue(
+    'https://apisae.mineduc.cl/sae-api-vitrina/v1/establecimientos/{.rbd}/'
+  ))
+}
+
+df_rbd_detalle <- f_rbd_detalle(
+  df_escuelas$rbd[[1]]
+  )
+```
+:::
+
+::: {.column width="50%"}
+- Lista de respuesta
+
+```{r}
+#| echo: true
+df_rbd_detalle |> str(1)
+```
+:::
+
+::::
+
+
+
+## rvest: información de detalle 2 {.smaller}
+
+Capturar la información de los `rbd` que hemos capturado.
+
+* Veamos los tres primeros:
+
+```{r}
+#| cache = TRUE
+l_rbd_detalle <- map(df_escuelas$rbd[1:3], 
+                     f_rbd_detalle)
+
+df_rbd_detalle <- l_rbd_detalle |> 
+  enframe() |> 
+  unnest_wider(value)
+
+head(df_rbd_detalle)
+```
+
+
+
+## Referencias adicionales:
+
+- [RSelenium](https://docs.ropensci.org/RSelenium/index.html). 
+Otro paquete para manejo de un navegador sin cabeza. 
+
+
+
+## Próxima clase
+
+- Revisión de trabajos finales.
+
+
+
+## {.smaller}
+
+Presentación y código en GitHub:\
+<https://github.com/caayala/web_scraping_soc40XX_2023>\
+<https://caayala.github.io/web_scraping_soc40XX_2023>
+
+<br>
+
+::: {style="font-size:3em; text-align:center; padding: 50px;"}
+¡Gracias!
+:::
+
+<br> 
+Cristián Ayala\
+<https://blog.desuc.cl/>\
+<http://github.com/caayala>
+
+
+```{r}
+#| echo = FALSE,
+#| include = FALSE
+
+# Extraer código R
+knitr::purl('class_10.qmd',
+            output = 'class_10.R',
+            quiet = TRUE)
+```

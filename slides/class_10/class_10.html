@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="class_10_files/libs/clipboard/clipboard.min.js"></script>
+<script src="class_10_files/libs/quarto-html/tabby.min.js"></script>
+<script src="class_10_files/libs/quarto-html/popper.min.js"></script>
+<script src="class_10_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="class_10_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="class_10_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="class_10_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="class_10_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.433">
+
+  <meta name="author" content=" Cristián Ayala  Director DESUC">
+  <title>quarto-inputa1b0762d</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="class_10_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="class_10_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="class_10_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="class_10_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="class_10_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="class_10_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="class_10_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title"><p>Clase 10: Taller<br>
+chromote y repaso</p></h1>
+  <p class="subtitle">Web Scraping y acceso a datos desde la web</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<br>Cristián Ayala<br> Director DESUC 
+</div>
+</div>
+</div>
+
+  <p class="date">6 de julio de 2023</p>
+</section>
+<section id="motivación" class="slide level2">
+<h2>Motivación</h2>
+<ul>
+<li><p>Obtener datos generados dinámicamente por javascript emulando un navegador con <code>chromote</code>.</p></li>
+<li><p>Recuento y resumen de lo visto.</p></li>
+</ul>
+</section>
+<section id="paquetes-para-la-clase-de-hoy" class="slide level2">
+<h2>Paquetes para la clase de hoy</h2>
+<p>Grupo de paquetes interrelacionados:</p>
+<ul>
+<li><p><a href="https://rstudio.github.io/chromote/">chromote</a>: Implementación de <a href="https://chromedevtools.github.io/devtools-protocol/">Chrome DevTools Protocol</a> en R para manejar un navegador programáticamente.</p></li>
+<li><p><a href="https://dmi3kno.github.io/polite/">polite</a>: promueve una conducta responsable.</p></li>
+</ul>
+</section>
+<section id="motivación-1" class="slide level2">
+<h2>Motivación 1</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Enfrentamos una página que procesa y genera contenido mediante JavaScript o acciones del navegador.</p></li>
+<li><p>La captura del html de ella no entregará información requerida.</p></li>
+<li><p>Podemos entonces controlar un navegador sin cabeza (<em><a href="https://en.wikipedia.org/wiki/Headless_browser">headless browser</a></em>) para generar acciones y obtener los datos demandados.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Ejemplo <a href="https://www.mime.mineduc.cl/explorer">MIME Mineduc</a></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="class_10_files/mime_mineduc.jpeg"></p>
+<figcaption>Vista principal MIME</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="motivación-2" class="slide level2">
+<h2>Motivación 2</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>La página contiene solo javascript.</p></li>
+<li><p>Datos de cada escuela se despliegan luego de buscar en listas.</p></li>
+<li><p>Queremos obtener la <strong>información de las escuelas</strong>.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Ejemplo <a href="https://admision.mineduc.cl/vitrina-vue/">Admisión escolar 2023</a></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="class_10_files/vue_vitrina-vue.png"></p>
+<figcaption>Vista principal MIME</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="motivación-3" class="slide level2">
+<h2>Motivación 3</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Al capturar su contenido sólo con <code>rvest</code> obtenemos lo siguiente:</p>
+<p>No funciona directamente sin un navegador que ejecute JavaScript.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-2_f488edff8dc3539206931a7c2d4ad959">
+<div class="cell-output cell-output-stdout">
+<pre><code>{html_node}
+&lt;body&gt;
+[1] &lt;div id="app"&gt;&lt;/div&gt;\n
+[2] &lt;script type="text/javascript" src="/vitrina-vue/static/js/manifest.b1b0a ...
+[3] &lt;script type="text/javascript" src="/vitrina-vue/static/js/vendor.e39d5d3 ...
+[4] &lt;script type="text/javascript" src="/vitrina-vue/static/js/app.08fc6ac089 ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="explorar-página-web-1" class="slide level2">
+<h2>Explorar página web 1</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Selección de escuelas mediante filtros.</li>
+<li>Distintas vistas de establecimientos</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="class_10_files/vue_explorar_1.png"></p>
+<figcaption>Imagenes cargan al aplicar filtros</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="explorar-página-web-2" class="slide level2 smaller">
+<h2>Explorar página web 2</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>La información de una comuna se accede mediante:</p></li>
+<li><p>GET: información de todos los establecimientos la comuna.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="class_10_files/vue_establecimientos_comuna.png"></p>
+<figcaption>POST de búsqueda de colegio</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="explorar-página-web-3" class="slide level2">
+<h2>Explorar página web 3</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>La información de la comuna entrega un <code>json</code> que podríamos manipular.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="class_10_files/vue_establecimientos_comuna_json.png"></p>
+<figcaption>POST de búsqueda de colegio body</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="explorar-página-web-4" class="slide level2">
+<h2>Explorar página web 4</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>En la vista <em>detalle</em> podemos ver información parcial de las escuelas.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="class_10_files/vue_establecimientos_comuna_detalle.png"></p>
+<figcaption>Detalle de comuna</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="chromote" class="slide level2">
+<h2>chromote</h2>
+<ul>
+<li><p>Para su uso se recomienda tener <strong>Google Chrome</strong> instalado.</p></li>
+<li><p>Pasos:</p>
+<ol type="1">
+<li>Crear una instancia del navegador controlado desde R.</li>
+<li>Abrir una ventana.</li>
+<li>Ir al sitio web.</li>
+<li>Capturar elementos de clase <code>.bg-white</code>.</li>
+</ol></li>
+</ul>
+</section>
+<section id="chromote-acceso-a-sitio-web" class="slide level2">
+<h2>chromote: Acceso a sitio web</h2>
+<p>Navegar hasta sitio de interés.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-3_d7c09862aa0fcaf7feb70332825a6743">
+<div class="cell-output cell-output-stdout">
+<pre><code>$frameId
+[1] "F24A43809A1F05B82119C27D0B9AD6BE"
+
+$loaderId
+[1] "229ADCB6F4A86734DCAD9AE4DA2A0FA1"</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="class_10_files/vue_chromote_DevTools_1.jpg"></p>
+<figcaption>DevTools</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="chromote-captura-de-atributos-1" class="slide level2">
+<h2>chromote: Captura de atributos 1</h2>
+<ul>
+<li>Obtenemos del navegador el nodo raíz (<code>root</code>) del <a href="https://en.wikipedia.org/wiki/Document_Object_Model">Document Object Model o DOM</a> de la página que está viendo.</li>
+<li>Usamos función <a href="https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getDocument">getDocument</a>.</li>
+</ul>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-5_35b543a3024c63c4847f2b7aa0ff36ae">
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 12
+ $ nodeId           : int 1
+ $ backendNodeId    : int 2
+ $ nodeType         : int 9
+ $ nodeName         : chr "#document"
+ $ localName        : chr ""
+ $ nodeValue        : chr ""
+ $ childNodeCount   : int 2
+ $ children         :List of 2
+  ..$ :List of 9
+  ..$ :List of 11
+ $ documentURL      : chr "https://admision.mineduc.cl/vitrina-vue/"
+ $ baseURL          : chr "https://admision.mineduc.cl/vitrina-vue/"
+ $ xmlVersion       : chr ""
+ $ compatibilityMode: chr "NoQuirksMode"</code></pre>
+</div>
+</div>
+</section>
+<section id="chromote-captura-de-atributos-2" class="slide level2 smaller">
+<h2>chromote: Captura de atributos 2</h2>
+<ul>
+<li>Dentro de los nodos del documento, se buscarán elementos <code>&lt;option&gt;</code> en un nodo <code>&lt;select&gt;</code> cuyo atributo <code>id</code> sea <code>select-region</code>.</li>
+</ul>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-6_ac67f69e1006cdcfaa99314f245f810f">
+<div class="cell-output cell-output-stdout">
+<pre><code>Error in eval(expr, envir, enclos) : object 'x1' not found</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Error in eval(expr, envir, enclos) : object 'x1' not found</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Error in eval(expr, envir, enclos) : object 'x1' not found</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Error in eval(expr, envir, enclos) : object 'opt_reg_ids' not found</code></pre>
+</div>
+</div>
+<ul>
+<li>Posición de los nodos de interés.</li>
+</ul>
+</section>
+<section id="chromote-captura-de-atributos-3-mediante-html" class="slide level2">
+<h2>chromote: Captura de atributos 3, mediante html</h2>
+<ul>
+<li>Con los nodos de interés, puedo acceder a su html mediante <a href="https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getOuterHTML">getOuterHTML</a></li>
+</ul>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-7_87a4198c787ce146db945861e05bba1c">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "- Escoge una región -"</code></pre>
+</div>
+</div>
+</section>
+<section id="chromote-captura-de-texto-4" class="slide level2">
+<h2>chromote: Captura de texto 4</h2>
+<ul>
+<li>Con los nodos de interés, puedo ver directamente atributos con <a href="https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getAttributes">getAttributes</a></li>
+</ul>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-8_ccb98873c60809df7593e9705733f48e">
+<div class="cell-output cell-output-stdout">
+<pre><code>$attributes
+$attributes[[1]]
+[1] "data-v-59f9e4dd"
+
+$attributes[[2]]
+[1] ""
+
+$attributes[[3]]
+[1] "value"
+
+$attributes[[4]]
+[1] "1"</code></pre>
+</div>
+</div>
+<p>Capturar el texto para todos los nodos identificados usando <code>map</code>.</p>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-9_87b3ec40b4ecf8bda4aedbccf9c2d36c">
+<div class="cell-output cell-output-stdout">
+<pre><code>Error in eval(expr, envir, enclos) : object 'opt_reg_ids' not found</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Error in eval(expr, envir, enclos) : object 'l_region_chr' not found</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-10_0e9c56cca2a0845c17180d4b3dea3025">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "- Escoge una región -"                    
+ [2] "TARAPACÁ"                                 
+ [3] "ANTOFAGASTA"                              
+ [4] "ATACAMA"                                  
+ [5] "COQUIMBO"                                 
+ [6] "VALPARAÍSO"                               
+ [7] "LIBERTADOR BERNARDO OHIGGINS"             
+ [8] "MAULE"                                    
+ [9] "BIOBÍO"                                   
+[10] "LA ARAUCANÍA"                             
+[11] "LOS LAGOS"                                
+[12] "AYSÉN DEL GENERAL CARLOS IBAÑEZ DEL CAMPO"
+[13] "MAGALLANES Y DE LA ANTÁRTICA CHILENA"     
+[14] "METROPOLITANA SANTIAGO"                   
+[15] "LOS RÍOS"                                 
+[16] "ARICA Y PARINACOTA"                       
+[17] "ÑUBLE"                                    </code></pre>
+</div>
+</div>
+</section>
+<section id="chromote-captura-de-atributos-5" class="slide level2">
+<h2>chromote: Captura de atributos 5</h2>
+<p>Capturar el atributo <code>value</code> para todos los nodos identificados usando <code>map</code>.</p>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-11_da71bc84625ab0c1b331b1be2aa5230f">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data-v-59f9e4dd" ""                "value"           "1"              </code></pre>
+</div>
+</div>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-12_2a20daf0c451807924b7057628595cda">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-13_46b376431a2ba01077d604403c97fcf5">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "disabled" "1"        "2"        "3"        "4"        "5"       
+ [7] "6"        "7"        "8"        "9"        "10"       "11"      
+[13] "12"       "13"       "14"       "15"       "16"      </code></pre>
+</div>
+</div>
+</section>
+<section id="chromote-navegar-entre-páginas-1" class="slide level2">
+<h2>chromote: navegar entre páginas 1</h2>
+<ul>
+<li>Puedo navegar dentro de la ventana del navegador con el método <a href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigate">navigate</a>.</li>
+</ul>
+<ul>
+<li>Revisión del historial de navegación con <a href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getNavigationHistory">getNavigationHistory</a></li>
+</ul>
+</section>
+<section id="chromote-navegar-entre-páginas-2" class="slide level2">
+<h2>chromote: navegar entre páginas 2</h2>
+<ul>
+<li>Vuelvo a páginas anteriores en el historial mediante <a href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigateToHistoryEntry">navigateToHistoryEntry</a></li>
+</ul>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-16_8c560b888de397f7e354c5bb5ee085f9">
+<div class="cell-output cell-output-stdout">
+<pre><code>named list()</code></pre>
+</div>
+</div>
+</section>
+<section id="chromote-cerrar-navegador" class="slide level2">
+<h2>chromote: Cerrar navegador</h2>
+<p>Terminar la sesión.</p>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-17_836e799b54354da9bfe1c758c8463a14">
+<div class="cell-output cell-output-stdout">
+<pre><code>Error in self$send_command(msg, callback = callback_, error = error_,  : 
+  Chromote object is closed.</code></pre>
+</div>
+</div>
+</section>
+<section id="httr-get-escuelas-por-comuna-1" class="slide level2">
+<h2>httr: GET escuelas por comuna 1</h2>
+<ul>
+<li><p>Revisar bien el funcionamiento de la página 🚨</p></li>
+<li><p>La página de SAE permite capturar colegios por región y comuna.</p></li>
+<li><p>Se puede usar GET para buscar escuelas luego de analizar el tráfico.</p></li>
+</ul>
+</section>
+<section id="httr-get-escuelas-por-comuna-2" class="slide level2">
+<h2>httr: GET escuelas por comuna 2</h2>
+<ul>
+<li>Datos de búsqueda para ALTO_HOSPICIO.</li>
+</ul>
+<p>¡Nos permite recabar información por comuna!</p>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-19_8f77aa4557bdfe88f6080a3a35dee540">
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   30 obs. of  12 variables:
+ $ rbd                     : int  12602 12534 12726 12649 12632 12715 40399 40054 12749 12655 ...
+ $ nombre                  : chr  "ESC. BASICA Y PARV. KRONOS SCHOOL" "LICEO COLEGIO METODISTA ROBERT JOHNSON" "COLEGIO MONTE CARMELO" "LICEO SUPERIOR DIEGO PORTALES" ...
+ $ dependencia             : chr  "PARTICULAR SUBVENCIONADO" "PARTICULAR SUBVENCIONADO" "PARTICULAR SUBVENCIONADO" "PARTICULAR SUBVENCIONADO" ...
+ $ habilitadoPostular      : logi  TRUE TRUE TRUE TRUE TRUE TRUE ...
+ $ nivelMinimo             : chr  "Kinder" "Pre-Kinder" "Pre-Kinder" "Pre-Kinder" ...
+ $ nivelMaximo             : chr  "IV Medio" "IV Medio" "8º Básico" "IV Medio" ...
+ $ etiquetas               :List of 30
+ $ informacionInstitucional:'data.frame':   30 obs. of  3 variables:
+ $ sedes                   :List of 30
+ $ imagenes                :List of 30
+ $ distancia               : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ procesosEspeciales      :List of 30</code></pre>
+</div>
+</div>
+</section>
+<section id="httr-get-escuelas-por-comuna-3" class="slide level2">
+<h2>httr: GET escuelas por comuna 3</h2>
+<ul>
+<li>Crear función para la captura de datos.</li>
+</ul>
+</section>
+<section id="httr-get-escuelas-por-comuna-4" class="slide level2 smaller">
+<h2>httr: GET escuelas por comuna 4</h2>
+<p>Puedo obtener el listado de comunas.</p>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-21_727f5b1e081df6fca36555f4fd961f8d">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ALTO HOSPICIO" "IQUIQUE"       "CAMIÑA"        "COLCHANE"     
+[5] "HUARA"         "PICA"         </code></pre>
+</div>
+</div>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-22_18fe85ac0426df957c743021e5ffd8d0">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ALTO HOSPICIO" "IQUIQUE"       "CAMIÑA"        "COLCHANE"     
+[5] "HUARA"         "PICA"         </code></pre>
+</div>
+</div>
+</section>
+<section id="httr-get-escuelas-por-comuna-5" class="slide level2">
+<h2>httr: GET escuelas por comuna 5</h2>
+<p>Prueba con algunas comunas</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-23_115162ed87b7677bae87fa3fc9796857">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "ALTO HOSPICIO"        "IQUIQUE"              "CAMIÑA"              
+ [4] "COLCHANE"             "HUARA"                "PICA"                
+ [7] "POZO ALMONTE"         "ANTOFAGASTA"          "MARÍA ELENA"         
+[10] "MEJILLONES"           "SIERRA GORDA"         "TALTAL"              
+[13] "TOCOPILLA"            "CALAMA"               "OLLAGÜE"             
+[16] "SAN PEDRO DE ATACAMA" "ALTO DEL CARMEN"      "FREIRINA"            
+[19] "HUASCO"               "VALLENAR"            </code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Buscar por <strong>comuna</strong>.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="httr-get-escuelas-por-comuna-6" class="slide level2 smaller">
+<h2>httr: GET escuelas por comuna 6</h2>
+<p>Obtener información de <code>comunas_chr</code> usando map.</p>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-25_4d2b27870914308aa9817462d1552509">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 12
+    rbd nombre  dependencia habilitadoPostular nivelMinimo nivelMaximo etiquetas
+  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;lgl&gt;              &lt;chr&gt;       &lt;chr&gt;       &lt;list&gt;   
+1 12711 "LICEO… PARTICULAR… TRUE               Pre-Kinder  8º Básico   &lt;chr [2]&gt;
+2 40253 "ESCUE… PARTICULAR… TRUE               1º Básico   6º Básico   &lt;chr [2]&gt;
+3 12650 "COLEG… PARTICULAR… TRUE               7º Básico   IV Medio    &lt;chr [4]&gt;
+4 12693 "COLEG… PARTICULAR… TRUE               Pre-Kinder  8º Básico   &lt;chr [3]&gt;
+5 12749 "COLEG… PARTICULAR… TRUE               Pre-Kinder  IV Medio    &lt;chr [5]&gt;
+6 12588 "COLEG… PARTICULAR… TRUE               1º Básico   8º Básico   &lt;chr [3]&gt;
+# ℹ 5 more variables: informacionInstitucional &lt;df[,3]&gt;, sedes &lt;list&gt;,
+#   imagenes &lt;list&gt;, distancia &lt;dbl&gt;, procesosEspeciales &lt;list&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="rvest-información-de-detalle-1" class="slide level2 smaller">
+<h2>rvest: información de detalle 1</h2>
+<p>Para la información de detalle, es posible usar simplemente <code>jsonlite::fromJSON</code>, si se conoce el <code>rbd</code>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-26_63fc840063f44a4b2e486f9cf98b79ca">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>f_rbd_detalle <span class="ot">&lt;-</span> <span class="cf">function</span>(.rbd){</span>
+<span id="cb23-2"><a href="#cb23-2"></a>  jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(<span class="fu">str_glue</span>(</span>
+<span id="cb23-3"><a href="#cb23-3"></a>    <span class="st">'https://apisae.mineduc.cl/sae-api-vitrina/v1/establecimientos/{.rbd}/'</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a>  ))</span>
+<span id="cb23-5"><a href="#cb23-5"></a>}</span>
+<span id="cb23-6"><a href="#cb23-6"></a></span>
+<span id="cb23-7"><a href="#cb23-7"></a>df_rbd_detalle <span class="ot">&lt;-</span> <span class="fu">f_rbd_detalle</span>(</span>
+<span id="cb23-8"><a href="#cb23-8"></a>  df_escuelas<span class="sc">$</span>rbd[[<span class="dv">1</span>]]</span>
+<span id="cb23-9"><a href="#cb23-9"></a>  )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Lista de respuesta</li>
+</ul>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-27_04aa322cc8a106bf77bb856ecb83435c">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>df_rbd_detalle <span class="sc">|&gt;</span> <span class="fu">str</span>(<span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 21
+ $ id                      : chr "5ced57b3ef59fa0001b24744"
+ $ rbd                     : int 12711
+ $ nombre                  : chr "LICEO ACADEMIA SINAI"
+ $ dependencia             : chr "PARTICULAR SUBVENCIONADO"
+ $ telefono                : chr "2267090"
+ $ mail                    : chr "SOSTENEDOR.SINAI@GMAIL.COM"
+ $ url                     : chr ""
+ $ habilitadoPostular      : logi TRUE
+ $ habilitadoVitrina       : logi TRUE
+ $ nivelMinimo             : chr "Pre-Kinder"
+ $ nivelMaximo             : chr "8º Básico"
+ $ director                :List of 1
+ $ etiquetas               : chr [1:2] "SEP" "GRATUITO"
+ $ informacionInstitucional:List of 13
+ $ sedes                   :'data.frame':   1 obs. of  3 variables:
+ $ imagenes                :'data.frame':   2 obs. of  2 variables:
+ $ distancia               : num 0
+ $ actividades             :'data.frame':   23 obs. of  4 variables:
+ $ procesosEspeciales      : list()
+ $ indicadores             : list()
+ $ especialidades          : list()</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="rvest-información-de-detalle-2" class="slide level2 smaller">
+<h2>rvest: información de detalle 2</h2>
+<p>Capturar la información de los <code>rbd</code> que hemos capturado.</p>
+<ul>
+<li>Veamos los tres primeros:</li>
+</ul>
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-28_5a6d3d7942ff339faa48480aba4cd995">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 22
+   name id        rbd nombre dependencia telefono mail  url   habilitadoPostular
+  &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;             
+1     1 5ced57… 12711 LICEO… PARTICULAR… 2267090  SOST… ""    TRUE              
+2     2 5ced5c… 40253 ESCUE… PARTICULAR… 9670455… ROSS… ""    TRUE              
+3     3 5ced57… 12650 COLEG… PARTICULAR… 2495653  SECR… "WWW… TRUE              
+# ℹ 13 more variables: habilitadoVitrina &lt;lgl&gt;, nivelMinimo &lt;chr&gt;,
+#   nivelMaximo &lt;chr&gt;, director &lt;list&gt;, etiquetas &lt;list&gt;,
+#   informacionInstitucional &lt;list&gt;, sedes &lt;df[,3]&gt;, imagenes &lt;list&gt;,
+#   distancia &lt;dbl&gt;, actividades &lt;list&gt;, procesosEspeciales &lt;lgl&gt;,
+#   indicadores &lt;lgl&gt;, especialidades &lt;list&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="referencias-adicionales" class="slide level2">
+<h2>Referencias adicionales:</h2>
+<ul>
+<li><a href="https://docs.ropensci.org/RSelenium/index.html">RSelenium</a>. Otro paquete para manejo de un navegador sin cabeza.</li>
+</ul>
+</section>
+<section id="próxima-clase" class="slide level2">
+<h2>Próxima clase</h2>
+<ul>
+<li>Revisión de trabajos finales.</li>
+</ul>
+</section>
+<section id="section" class="slide level2 smaller">
+<h2></h2>
+<p>Presentación y código en GitHub:<br>
+<a href="https://github.com/caayala/web_scraping_soc40XX_2023" class="uri">https://github.com/caayala/web_scraping_soc40XX_2023</a><br>
+<a href="https://caayala.github.io/web_scraping_soc40XX_2023" class="uri">https://caayala.github.io/web_scraping_soc40XX_2023</a></p>
+<p><br></p>
+<div style="font-size:3em; text-align:center; padding: 50px;">
+<p>¡Gracias!</p>
+</div>
+<p><br> Cristián Ayala<br>
+<a href="https://blog.desuc.cl/" class="uri">https://blog.desuc.cl/</a><br>
+<a href="http://github.com/caayala" class="uri">http://github.com/caayala</a></p>
+<div class="footer footer-default">
+<p>DESUC Web Scraping, 2023</p>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="class_10_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="class_10_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="class_10_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="class_10_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="class_10_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="class_10_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="class_10_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="class_10_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="class_10_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="class_10_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copiado");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copiado");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
