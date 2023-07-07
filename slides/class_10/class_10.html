@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content=" Cristián Ayala  Director DESUC">
-  <title>quarto-inputa1b0762d</title>
+  <title>quarto-input411f08e4</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -659,18 +659,7 @@ $loaderId
 </ul>
 <div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-8_ccb98873c60809df7593e9705733f48e">
 <div class="cell-output cell-output-stdout">
-<pre><code>$attributes
-$attributes[[1]]
-[1] "data-v-59f9e4dd"
-
-$attributes[[2]]
-[1] ""
-
-$attributes[[3]]
-[1] "value"
-
-$attributes[[4]]
-[1] "1"</code></pre>
+<pre><code>Error in eval(expr, envir, enclos) : object 'opt_reg_ids' not found</code></pre>
 </div>
 </div>
 <p>Capturar el texto para todos los nodos identificados usando <code>map</code>.</p>
@@ -796,15 +785,15 @@ $attributes[[4]]
 <section id="httr-get-escuelas-por-comuna-4" class="slide level2 smaller">
 <h2>httr: GET escuelas por comuna 4</h2>
 <p>Puedo obtener el listado de comunas.</p>
-<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-21_727f5b1e081df6fca36555f4fd961f8d">
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-21_ea8a20c56449c410b362aa3ea7c3fe32">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ALTO HOSPICIO" "IQUIQUE"       "CAMIÑA"        "COLCHANE"     
 [5] "HUARA"         "PICA"         </code></pre>
 </div>
 </div>
-<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-22_18fe85ac0426df957c743021e5ffd8d0">
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-22_0d62571b0e93f279460f8e5f45b0dda1">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "ALTO HOSPICIO" "IQUIQUE"       "CAMIÑA"        "COLCHANE"     
+<pre><code>[1] "ALTO_HOSPICIO" "IQUIQUE"       "CAMINA"        "COLCHANE"     
 [5] "HUARA"         "PICA"         </code></pre>
 </div>
 </div>
@@ -835,17 +824,17 @@ $attributes[[4]]
 <section id="httr-get-escuelas-por-comuna-6" class="slide level2 smaller">
 <h2>httr: GET escuelas por comuna 6</h2>
 <p>Obtener información de <code>comunas_chr</code> usando map.</p>
-<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-25_4d2b27870914308aa9817462d1552509">
+<div class="cell" data-hash="class_10_cache/revealjs/unnamed-chunk-25_163c99e3399af1b06197d2e4f5e054ba">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 12
     rbd nombre  dependencia habilitadoPostular nivelMinimo nivelMaximo etiquetas
   &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;lgl&gt;              &lt;chr&gt;       &lt;chr&gt;       &lt;list&gt;   
-1 12711 "LICEO… PARTICULAR… TRUE               Pre-Kinder  8º Básico   &lt;chr [2]&gt;
-2 40253 "ESCUE… PARTICULAR… TRUE               1º Básico   6º Básico   &lt;chr [2]&gt;
+1 12747 "COLEG… PARTICULAR… TRUE               Kinder      IV Medio    &lt;chr [4]&gt;
+2 10917 "LICEO… PUBLICO     TRUE               7º Básico   IV Medio    &lt;chr [5]&gt;
 3 12650 "COLEG… PARTICULAR… TRUE               7º Básico   IV Medio    &lt;chr [4]&gt;
-4 12693 "COLEG… PARTICULAR… TRUE               Pre-Kinder  8º Básico   &lt;chr [3]&gt;
-5 12749 "COLEG… PARTICULAR… TRUE               Pre-Kinder  IV Medio    &lt;chr [5]&gt;
-6 12588 "COLEG… PARTICULAR… TRUE               1º Básico   8º Básico   &lt;chr [3]&gt;
+4 40253 "ESCUE… PARTICULAR… TRUE               1º Básico   6º Básico   &lt;chr [2]&gt;
+5 12655 "COLEG… PARTICULAR… TRUE               1º Básico   IV Medio    &lt;chr [4]&gt;
+6 12693 "COLEG… PARTICULAR… TRUE               Pre-Kinder  8º Básico   &lt;chr [3]&gt;
 # ℹ 5 more variables: informacionInstitucional &lt;df[,3]&gt;, sedes &lt;list&gt;,
 #   imagenes &lt;list&gt;, distancia &lt;dbl&gt;, procesosEspeciales &lt;list&gt;</code></pre>
 </div>

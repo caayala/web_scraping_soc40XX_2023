@@ -404,7 +404,7 @@ resp |> content('text') |> jsonlite::fromJSON() |> str(1)
 f_comuna_escuelas <- function(.comuna){
   # Recepción de la respuesta
   response <- GET(url = 'https://apisae.mineduc.cl/sae-api-vitrina/v1/establecimientos',
-                  query = list(comuna = comuna),
+                  query = list(comuna = .comuna),
                   accept_json(),
                   add_headers('accept-encoding' = 'gzip'))
   
@@ -427,14 +427,15 @@ comunas <- js_comunas |> html_text() |>
   str_extract_all('nombreComuna:\"(.*?)\"')
 
 comunas[[1]] |> 
-  str_remove_all('nombreComuna:\\\"|\\\"') |> 
+  str_remove_all('nombreComuna:\\\"|\\\"') |>
   head()
 ```
 
 
 ```{r}
 comunas <- comunas[[1]] |> 
-  str_remove_all(r'(nombreComuna:\"|\")') # R 4.0 soporta "raw strings"
+  str_remove_all(r'(nombreComuna:\"|\")') |>  # R 4.0 soporta "raw strings"
+  janitor::make_clean_names(case = 'all_caps') # "_" por " " y eliminar caracteres especiales (Ñ)
 
 comunas |> head()
 ```
@@ -470,7 +471,7 @@ df <- f_comuna_escuelas(comunas[1])
 Obtener información de `comunas_chr` usando map.
 
 ```{r}
-l_escuelas <- map(comunas[1:3], 
+l_escuelas <- map(comunas[1:4], 
                   f_comuna_escuelas)
 
 df_escuelas <- l_escuelas |> 
