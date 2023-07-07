@@ -53,7 +53,7 @@ Tendremos clases teóricas (T) y prácticas (P).
   chileno. [Instrucciones](./homework/c_2).
   [Respuesta](./homework/c_2_answers.pdf).
 
-- Control 3 (20%): Uso de API Análisis de canciones.
+- Control 3 (20%): Uso de API Análisis de canciones en Spotify.
   [Instrucciones](./homework/c_3).
   <!-- [Respuesta](./homework/c_3_answers.pdf) -->
 
