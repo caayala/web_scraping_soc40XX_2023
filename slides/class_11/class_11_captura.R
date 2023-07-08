@@ -118,3 +118,7 @@ write.table(df_contenido,
 # • Learn more at <https://github.com/r-lib/actions/blob/v2/examples/README.md>.
 # ✔ Adding R-CMD-check badge to 'README.Rmd'
 # • Re-knit 'README.Rmd' with `devtools::build_readme()`
+
+## Creación de archivo DESCRIPTION ----
+
+## Permimsos de escritura al workflow o job ----
