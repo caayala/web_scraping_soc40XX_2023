@@ -100,3 +100,21 @@ write.table(df_contenido,
 #                     header = TRUE,
 #                     sep = ';') |> 
 #   tibble::as_tibble()
+
+
+# Preparar GitHub Actions ----
+
+# Ayuda desde usethis::use_github_action('check-release')
+
+# usethis::use_github_action('check-release')
+# 
+# > usethis::use_github_action('check-release')
+# ✔ Setting active project to '~/Dropbox (DESUC)/Documentos/Clases/UC - Web scraping 2023/web_scraping_soc40XX_2023'
+# ✔ Creating '.github/'
+# ✔ Adding '^\\.github$' to '.Rbuildignore'
+# ✔ Adding '*.html' to '.github/.gitignore'
+# ✔ Creating '.github/workflows/'
+# ✔ Saving 'r-lib/actions/examples/check-release.yaml@v2' to '.github/workflows/R-CMD-check.yaml'
+# • Learn more at <https://github.com/r-lib/actions/blob/v2/examples/README.md>.
+# ✔ Adding R-CMD-check badge to 'README.Rmd'
+# • Re-knit 'README.Rmd' with `devtools::build_readme()`
