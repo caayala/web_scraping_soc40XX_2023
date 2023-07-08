@@ -24,7 +24,7 @@ name: R-web_scraping_class_11
 jobs:
   R-CMD-check:
     runs-on: ubuntu-latest
-    permissions: read-all|write-all
+    permissions: [read-all, write-all]
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
