@@ -2,8 +2,9 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   schedule:
-  Ref: https://jasonet.co/posts/scheduled-actions/
-   - cron: '0 8 * * *'  # A las 5:00 hrs de cada día hora Chilena
+  # Ref: https://jasonet.co/posts/scheduled-actions/
+  - cron: '0 8 * * *'  # A las 5:00 hrs de cada día hora Chilena
+  # Otras alternativas 
   # push:
   #   branches: [main, master]
   # pull_request:
