@@ -19,7 +19,7 @@ on:
       tags:
         description: 'Tags'
   
-permissions: read-all|write-all
+permissions: write-all
 
 name: R-web_scraping_class_11
 
