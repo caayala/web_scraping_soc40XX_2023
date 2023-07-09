@@ -18,11 +18,12 @@ on:
         default: 'Evento manual para obtener datos desde la web'
       tags:
         description: 'Tags'
+  
+permissions: [read-all, write-all]
 
 name: R-web_scraping_class_11
 
 jobs:
-  permissions: [read-all, write-all]
   R-CMD-check:
     runs-on: ubuntu-latest
     env:
