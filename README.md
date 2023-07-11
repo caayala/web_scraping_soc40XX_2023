@@ -41,7 +41,7 @@ Tendremos clases teóricas (T) y prácticas (P).
 |     8 | 2023-06-29 | P    | Integración de R con Google Sheets                 | [`googlesheets4`](https://googlesheets4.tidyverse.org)                                       |                               | [Slides](slides/class_8/class_8#1) [.qmd](slides/class_8/class_8.qmd) [.R](slides/class_8/class_8_taller.R) |
 |     9 | 2023-07-04 | T    | Uso de APIs: Spotify                               | [`spotifyr`](https://www.rcharlie.com/spotifyr/)                                             |                               | [Slides](slides/class_9/class_9#1) [.qmd](slides/class_9/class_9.qmd)                                       |
 |    10 | 2023-07-06 | T    | Uso headless browser: chromote                     | [`chormote`](https://rstudio.github.io/chromote/)                                            | [C3 (20%)](homework/c_3.html) | [Slides](slides/class_10/class_10#1) [.qmd](slides/class_10/class_10.qmd)                                   |
-|    11 | 2023-07-11 | T    | Presentación trabajo final                         | [`usethis`](https://usethis.r-lib.org), [GitHub Actions](https://docs.github.com/en/actions) |                               | [Slides](slides/class_11/class_10#1) [.qmd](slides/class_11/class_11.qmd)                                   |
+|    11 | 2023-07-11 | T    | Presentación trabajo final                         | [`usethis`](https://usethis.r-lib.org), [GitHub Actions](https://docs.github.com/en/actions) |                               | [Slides](slides/class_11/class_11#1) [.qmd](slides/class_11/class_11.qmd)                                   |
 
 #### Evaluaciones
 
