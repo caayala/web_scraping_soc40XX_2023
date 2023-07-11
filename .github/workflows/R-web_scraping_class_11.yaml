@@ -18,13 +18,13 @@ on:
         default: 'Evento manual para obtener datos desde la web'
       tags:
         description: 'Tags'
-  
+
 permissions: write-all
 
 name: R-web_scraping_class_11
 
 jobs:
-  R-CMD-check:
+  R_scraping:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
